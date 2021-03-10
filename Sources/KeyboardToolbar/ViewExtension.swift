@@ -29,6 +29,10 @@ internal struct AppendKeyboardToolbar: ViewModifier {
 
 public extension View {
     func keyboardToolbar(_ items: [KeyboardToolbarItem], style: KeyboardToolbarStyle = .standard) -> some View {
-        self.modifier(AppendKeyboardToolbar(items: items, style: style))
+        if items.isEmpty {
+            return AnyView(self)
+        } else {
+            return AnyView(self.modifier(AppendKeyboardToolbar(items: items, style: style)))
+        }
     }
 }
