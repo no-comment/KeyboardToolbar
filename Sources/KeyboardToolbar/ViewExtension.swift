@@ -3,15 +3,20 @@ import SwiftUI
 internal struct AppendKeyboardToolbar: ViewModifier {
     @ObservedObject var responder: KeyboardResponder = KeyboardResponder()
     let items: [KeyboardToolbarItem]
+    let style: KeyboardToolbarStyle
     
     func body(content: Content) -> some View {
         ZStack {
             content
                 .padding(.bottom, responder.currentHeight == 0 ? 0 : 40)
             
-            VStack {
+            VStack(spacing: 0) {
                 Spacer()
-                KeyboardToolbar(items: items)
+                
+                Divider()
+                    .foregroundColor(style.dividerColor)
+                
+                KeyboardToolbar(items: items, style: style)
             }
             .opacity(responder.currentHeight == 0 ? 0 : 1)
             .animation(.easeOut(duration: responder.duration))
@@ -23,7 +28,7 @@ internal struct AppendKeyboardToolbar: ViewModifier {
 }
 
 public extension View {
-    func keyboardToolbar(_ items: [KeyboardToolbarItem]) -> some View {
-        self.modifier(AppendKeyboardToolbar(items: items))
+    func keyboardToolbar(_ items: [KeyboardToolbarItem], style: KeyboardToolbarStyle = .standard) -> some View {
+        self.modifier(AppendKeyboardToolbar(items: items, style: style))
     }
 }

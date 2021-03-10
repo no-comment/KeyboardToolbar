@@ -1,0 +1,22 @@
+import SwiftUI
+
+public struct KeyboardToolbarStyle {
+    let backgroundColor: Color
+    let dividerColor: Color
+    let height: CGFloat
+    let itemSpacing: CGFloat
+    
+    public init(backgroundColor: Color = Color(UIColor.systemGray4), dividerColor: Color = .gray, height: CGFloat = 40, itemSpacing: CGFloat = 5) {
+        self.backgroundColor = backgroundColor
+        self.dividerColor = dividerColor
+        self.height = height
+        self.itemSpacing = itemSpacing
+    }
+}
+
+// MARK: Style Presets
+public extension KeyboardToolbarStyle {
+    static let standard = KeyboardToolbarStyle(backgroundColor: Color(UIColor.systemGray4))
+    
+    static let contrast = KeyboardToolbarStyle(backgroundColor: Color(UIColor.systemGray6))
+}
