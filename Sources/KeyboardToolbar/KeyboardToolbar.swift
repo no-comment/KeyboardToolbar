@@ -66,7 +66,7 @@ internal struct KeyboardToolbar: View {
     
     var divider: some View {
         Rectangle()
-            .frame(width: 1)
+            .frame(width: style.dividerWidth)
             .foregroundColor(style.dividerColor)
             .padding(.vertical, 5)
             .padding(.horizontal, style.itemSpacing)

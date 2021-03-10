@@ -64,10 +64,11 @@ Use by attaching `.keyboardToolbar()` to the outermost part of your View.
 | **Parameter**     | **Type**  | Optional | **Description**                                              |
 | ----------------- | --------- | -------- | ------------------------------------------------------------ |
 | `backgroundColor` | `Color`   | Yes      | The background color of the toolbar.                         |
-| `dividerColor`    | `Color`   | Yes      | Color of the divider above the toolbar, as well as the dividers between the fixed and not fixed items. |
 | `height`          | `CGFloat` | Yes      | Height of the toolbar.                                       |
 | `itemSize`        | `CGFloat` | Yes      | Size of the toolbar items.                                   |
 | `itemSpacing`     | `CGFloat` | Yes      | Spacing between the toolbar items.                           |
+| `dividerColor`    | `Color`   | Yes      | Color of the divider above the toolbar, as well as the dividers between the fixed and not fixed items. |
+| `dividerWidth`    | `CGFloat` | Yes      | Width of the dividers.                                       |
 
 #### Presets
 

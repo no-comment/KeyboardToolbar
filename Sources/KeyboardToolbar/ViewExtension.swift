@@ -16,7 +16,7 @@ internal struct AppendKeyboardToolbar: ViewModifier {
                 if !items.isEmpty {
                     Rectangle()
                         .foregroundColor(style.dividerColor)
-                        .frame(height: 1)
+                        .frame(height: style.dividerWidth)
                     
                     KeyboardToolbar(items: items, style: style)
                 }
