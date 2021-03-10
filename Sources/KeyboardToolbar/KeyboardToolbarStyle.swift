@@ -7,7 +7,7 @@ public struct KeyboardToolbarStyle {
     let itemSize: CGFloat
     let itemSpacing: CGFloat
     
-    public init(backgroundColor: Color = Color(UIColor.systemGray4), dividerColor: Color = .gray, height: CGFloat = 40, itemSize: CGFloat = 20, itemSpacing: CGFloat = 5) {
+    public init(backgroundColor: Color = Color(UIColor.systemGray4), dividerColor: Color = .gray, height: CGFloat = 40, itemSize: CGFloat = 20, itemSpacing: CGFloat = 10) {
         self.backgroundColor = backgroundColor
         self.dividerColor = dividerColor
         self.height = height
@@ -20,5 +20,5 @@ public struct KeyboardToolbarStyle {
 public extension KeyboardToolbarStyle {
     static let standard = KeyboardToolbarStyle(backgroundColor: Color(UIColor.systemGray4))
     
-    static let contrast = KeyboardToolbarStyle(backgroundColor: Color(UIColor.systemGray6))
+    static let contrast = KeyboardToolbarStyle(backgroundColor: Color(UIColor.systemBackground), dividerColor: Color(UIColor.systemGray))
 }

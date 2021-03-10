@@ -26,7 +26,7 @@ internal struct KeyboardToolbar: View {
             trailingItemsView
         }
         .frame(height: style.height)
-        .padding(.horizontal, 10)
+        .padding(.horizontal, style.itemSpacing)
         .background(style.backgroundColor)
     }
     
@@ -67,7 +67,7 @@ internal struct KeyboardToolbar: View {
     var divider: some View {
         Divider()
             .padding(.vertical, 5)
-            .padding(.horizontal, 10)
+            .padding(.horizontal, style.itemSpacing)
             .foregroundColor(style.dividerColor)
     }
 }
