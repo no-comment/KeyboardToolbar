@@ -1,7 +1,7 @@
 import SwiftUI
 
 internal struct AppendKeyboardToolbar: ViewModifier {
-    @ObservedObject var responder: KeyboardResponder = KeyboardResponder()
+    @StateObject var responder: KeyboardResponder = KeyboardResponder()
     let items: [KeyboardToolbarItem]
     let style: KeyboardToolbarStyle
     
