@@ -19,6 +19,7 @@ import KeyboardToolbar
 let toolbarItems = [
     KeyboardToolbarItem("bold", callback: {}),
     KeyboardToolbarItem("italic", callback: {}),
+    KeyboardToolbarItem("underline", callback: {}),
     .dismissKeyboard
 ]
 
@@ -51,7 +52,7 @@ Use by attaching `.keyboardToolbar()` to the outermost part of your View.
 | ------------- | ---------------------- | ------------ | ------------------------------------------------------------ |
 | `image`       | `Image`                | No           | The image/icon of the toolbar icon. Convenience initializers exist for systemName and name |
 | `color`       | `Color`                | Yes          | Color of the image/icon                                      |
-| `isFixed`     | `KeyboardToolbarEdge?` | Yes          | Wether the item should be sticky or not. Possible values: `nil`, `.leading` or `.trailing`. |
+| `isFixed`     | `KeyboardToolbarEdge?` | Yes          | Whether the item should be sticky or not. Possible values: `nil`, `.leading` or `.trailing`. |
 | `callback`    | `() -> Void`           | No           | Action the item should perform when pressed                  |
 
 #### Presets
