@@ -20,5 +20,5 @@ public struct KeyboardToolbarStyle {
 public extension KeyboardToolbarStyle {
     static let standard = KeyboardToolbarStyle(backgroundColor: Color(UIColor.systemGray4))
     
-    static let contrast = KeyboardToolbarStyle(backgroundColor: Color(UIColor.systemBackground), dividerColor: Color(UIColor.systemGray))
+    static let contrast = KeyboardToolbarStyle(backgroundColor: Color(UIColor.systemBackground), dividerColor: Color(UIColor.systemGray4))
 }

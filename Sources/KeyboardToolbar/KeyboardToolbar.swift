@@ -65,10 +65,11 @@ internal struct KeyboardToolbar: View {
     }
     
     var divider: some View {
-        Divider()
+        Rectangle()
+            .frame(width: 1)
+            .foregroundColor(style.dividerColor)
             .padding(.vertical, 5)
             .padding(.horizontal, style.itemSpacing)
-            .foregroundColor(style.dividerColor)
     }
 }
 
