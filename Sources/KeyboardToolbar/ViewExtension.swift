@@ -8,7 +8,7 @@ internal struct AppendKeyboardToolbar: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             content
-                .padding(.bottom, responder.currentHeight == 0 ? 0 : 40)
+                .padding(.bottom, responder.currentHeight == 0 ? 0 : style.height)
             
             VStack(spacing: 0) {
                 Spacer()
