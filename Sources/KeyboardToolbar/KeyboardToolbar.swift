@@ -1,10 +1,3 @@
-//
-//  KeyboardToolbar.swift
-//
-//
-//  Created by Cameron Shemilt on 09.03.21.
-//
-
 import SwiftUI
 
 internal struct KeyboardToolbar: View {
@@ -21,12 +14,14 @@ internal struct KeyboardToolbar: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 25, height: 25)
                             .foregroundColor(item.color)
-                    }).buttonStyle(PlainButtonStyle())
+                    })
+                    .buttonStyle(PlainButtonStyle())
                     .frame(width: 40, height: 40)
                     .contentShape(Rectangle())
                 }
             }
-        }.frame(height: 40)
+        }
+        .frame(height: 40)
         .background(backgroundColor)
     }
 }
