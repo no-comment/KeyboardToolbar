@@ -16,19 +16,13 @@ internal struct KeyboardToolbar: View {
     var body: some View {
         HStack(spacing: 0) {
             leadingItemsView
-            
-            Divider()
-                .padding(.vertical, 5)
-                .padding(.horizontal, 10)
-                .foregroundColor(style.dividerColor)
-            
+            if !leadingItems.isEmpty {
+                divider
+            }
             scrollingItemsView
-            
-            Divider()
-                .padding(.vertical, 5)
-                .padding(.horizontal, 10)
-                .foregroundColor(style.dividerColor)
-            
+            if !trailingItems.isEmpty {
+                divider
+            }
             trailingItemsView
         }
         .frame(height: style.height)
@@ -36,57 +30,45 @@ internal struct KeyboardToolbar: View {
         .background(style.backgroundColor)
     }
     
+    func itemGroup(_ items: [KeyboardToolbarItem]) -> some View {
+        ForEach(items) { item in
+            Button(action: item.callback, label: {
+                item.image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: style.itemSize, height: style.itemSize)
+                    .foregroundColor(item.color)
+            })
+            .frame(height: style.height)
+            .contentShape(Rectangle())
+        }
+    }
+    
     var leadingItemsView: some View {
         HStack(spacing: style.itemSpacing) {
-            ForEach(leadingItems) { item in
-                Button(action: item.callback, label: {
-                    item.image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: style.itemSize, height: style.itemSize)
-                        .foregroundColor(item.color)
-                })
-                .buttonStyle(PlainButtonStyle())
-                .frame(height: style.height)
-                .contentShape(Rectangle())
-            }
+            itemGroup(leadingItems)
         }
     }
     
     var scrollingItemsView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: style.itemSpacing) {
-                ForEach(scrollingItems) { item in
-                    Button(action: item.callback, label: {
-                        item.image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: style.itemSize, height: style.itemSize)
-                            .foregroundColor(item.color)
-                    })
-                    .buttonStyle(PlainButtonStyle())
-                    .frame(height: style.height)
-                    .contentShape(Rectangle())
-                }
+                itemGroup(scrollingItems)
             }
         }
     }
     
     var trailingItemsView: some View {
         HStack(spacing: style.itemSpacing) {
-            ForEach(trailingItems) { item in
-                Button(action: item.callback, label: {
-                    item.image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: style.itemSize, height: style.itemSize)
-                        .foregroundColor(item.color)
-                })
-                .buttonStyle(PlainButtonStyle())
-                .frame(height: style.height)
-                .contentShape(Rectangle())
-            }
+            itemGroup(trailingItems)
         }
+    }
+    
+    var divider: some View {
+        Divider()
+            .padding(.vertical, 5)
+            .padding(.horizontal, 10)
+            .foregroundColor(style.dividerColor)
     }
 }
 
