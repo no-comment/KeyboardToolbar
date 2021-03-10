@@ -29,5 +29,7 @@ public enum KeyboardToolbarEdge {
 
 // MARK: Presets
 public extension KeyboardToolbarItem {
-    static let dismissKeyboard = KeyboardToolbarItem("xmark.circle", color: .accentColor, isFixed: .trailing, callback: {})
+    static let dismissKeyboard = KeyboardToolbarItem("keyboard.chevron.compact.down", color: .accentColor, isFixed: .trailing, callback: {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    })
 }
