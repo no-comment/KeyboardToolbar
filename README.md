@@ -7,7 +7,7 @@ Supports iOS 14.0+.
 
 ### Swift Package Manager
 
-File -> Swift Packages -> Add Package Dependency and use the URL `https://github.com/cameronshemilt/KeyboardToolbar`.
+Add `https://github.com/cameronshemilt/KeyboardToolbar` to your [Package Dependencies](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
 ## Usage
 
@@ -16,10 +16,10 @@ The KeyboardToolbar contains ToolbarItems you provide.
 ```swift
 import KeyboardToolbar
 
-let toolbarItems = [
-    KeyboardToolbarItem("bold", callback: {}),
-    KeyboardToolbarItem("italic", callback: {}),
-    KeyboardToolbarItem("underline", callback: {}),
+let toolbarItems: [KeyboardToolbarItem] = [
+    .init("bold", callback: {}),
+    .init("italic", callback: {}),
+    .init("underline", callback: {}),
     .dismissKeyboard
 ]
 
@@ -44,13 +44,13 @@ struct ContentView: View {
 | `items`       | `[KeyboardToolbarItem]` | No           | All of the KeyboardToolbarItems you want the Toolbar to contain. |
 | `style`       | `KeyboardToolbarStyle`  | Yes          | The styling of the toolbar.                                  |
 
-Use by attaching `.keyboardToolbar()` to the outermost part of your View.
+Use by attaching `.keyboardToolbar(...)` to the outermost part of your View.
 
 ### KeyboardToolbarItem
 
 | **Parameter** | **Type**               | **Optional** | **Description**                                              |
 | ------------- | ---------------------- | ------------ | ------------------------------------------------------------ |
-| `image`       | `Image`                | No           | The image/icon of the toolbar icon. Convenience initializers exist for systemName and name |
+| `image`       | `Image`                | No           | The image/icon of the toolbar icon. Convenience initializers exist for *systemName* and *name* |
 | `color`       | `Color`                | Yes          | Color of the image/icon                                      |
 | `isFixed`     | `KeyboardToolbarEdge?` | Yes          | Whether the item should be sticky or not. Possible values: `nil`, `.leading` or `.trailing`. |
 | `callback`    | `() -> Void`           | No           | Action the item should perform when pressed                  |
