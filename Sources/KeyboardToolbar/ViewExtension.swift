@@ -14,11 +14,7 @@ internal struct AppendKeyboardToolbar: ViewModifier {
                 Spacer()
                 
                 if !items.isEmpty {
-                    Rectangle()
-                        .foregroundColor(style.dividerColor)
-                        .frame(height: style.dividerWidth)
-                    
-                    KeyboardToolbar(items: items, style: style)
+                    toolbar
                 }
             }
             .opacity(responder.currentHeight == 0 ? 0 : 1)
@@ -27,6 +23,30 @@ internal struct AppendKeyboardToolbar: ViewModifier {
         .padding(.bottom, responder.currentHeight)
         .edgesIgnoringSafeArea(.bottom)
         .animation(.easeOut(duration: responder.duration))
+    }
+    
+    var toolbar: some View {
+        ZStack {
+            // Empty bar in background to fill safe areas
+            VStack(spacing: 0) {
+                Rectangle()
+                    .foregroundColor(style.dividerColor)
+                    .frame(height: style.dividerWidth)
+                
+                Rectangle()
+                    .foregroundColor(style.backgroundColor)
+                    .frame(height: style.height)
+            }
+            .edgesIgnoringSafeArea(.horizontal)
+            
+            VStack(spacing: 0) {
+                Rectangle()
+                    .foregroundColor(style.dividerColor)
+                    .frame(height: style.dividerWidth)
+                
+                KeyboardToolbar(items: items, style: style)
+            }
+        }
     }
 }
 
