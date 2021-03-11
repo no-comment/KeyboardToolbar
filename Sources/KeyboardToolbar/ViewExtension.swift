@@ -19,8 +19,8 @@ internal struct AppendKeyboardToolbar: ViewModifier {
             }
             .opacity(responder.currentHeight == 0 ? 0 : 1)
             .animation(.easeOut(duration: responder.duration))
+            .padding(.bottom, responder.currentHeight)
         }
-        .padding(.bottom, responder.currentHeight)
         .edgesIgnoringSafeArea(.bottom)
         .animation(.easeOut(duration: responder.duration))
     }
