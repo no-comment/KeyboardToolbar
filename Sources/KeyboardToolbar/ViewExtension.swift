@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 import SwiftUI
 
 internal struct AppendKeyboardToolbar: ViewModifier {
@@ -52,6 +53,11 @@ internal struct AppendKeyboardToolbar: ViewModifier {
 
 public extension View {
     func keyboardToolbar(_ items: [KeyboardToolbarItem], style: KeyboardToolbarStyle = .standard) -> some View {
-        self.modifier(AppendKeyboardToolbar(items: items, style: style))
+        #if targetEnvironment(macCatalyst)
+        return self
+        #else
+        return self.modifier(AppendKeyboardToolbar(items: items, style: style))
+        #endif
     }
 }
+#endif

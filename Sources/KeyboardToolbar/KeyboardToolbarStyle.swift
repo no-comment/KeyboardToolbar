@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 import SwiftUI
 
 public struct KeyboardToolbarStyle {
@@ -29,3 +30,4 @@ public extension KeyboardToolbarStyle {
     
     static let contrast = KeyboardToolbarStyle(backgroundColor: Color(UIColor.systemBackground), dividerColor: Color(UIColor.systemGray4), dividerWidth: 1)
 }
+#endif

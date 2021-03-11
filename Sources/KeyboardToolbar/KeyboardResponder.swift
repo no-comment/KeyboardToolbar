@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 import SwiftUI
 
 internal final class KeyboardResponder: ObservableObject {
@@ -37,3 +38,4 @@ internal final class KeyboardResponder: ObservableObject {
         }
     }
 }
+#endif

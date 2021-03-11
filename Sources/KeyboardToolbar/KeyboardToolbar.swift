@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 import SwiftUI
 
 internal struct KeyboardToolbar: View {
@@ -78,3 +79,4 @@ struct KeyboardToolbar_Previews: PreviewProvider {
         KeyboardToolbar(items: [KeyboardToolbarItem("xmark.circle", callback: {}), KeyboardToolbarItem("checkmark.circle", callback: {})], style: .standard)
     }
 }
+#endif
