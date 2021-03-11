@@ -1,6 +1,10 @@
 # KeyboardToolbar
 A SwiftUI Toolbar for your iOS keyboard.
 
+![KeyboardToolbarPreview](https://user-images.githubusercontent.com/31541782/110855742-0df94c80-82b7-11eb-955d-3fa352457dd1.gif)
+
+You can find example files in `Tests/ExampleViews`
+
 ## Installation
 
 Supports iOS 14.0+.
@@ -11,7 +15,8 @@ Add `https://github.com/cameronshemilt/KeyboardToolbar` to your [Package Depende
 
 ## Usage
 
-The KeyboardToolbar contains ToolbarItems you provide.
+The KeyboardToolbar can contain multiple `KeyboardToolbarItems` you provide.
+You can additionally style the toolbar (size, color, padding etc.) via a `KeyboardToolbarStyle`.
 
 ```swift
 import KeyboardToolbar
