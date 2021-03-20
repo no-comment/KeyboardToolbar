@@ -9,7 +9,7 @@ public struct KeyboardToolbarItem: Identifiable {
     let isFixed: KeyboardToolbarEdge?
     let text: String?
     
-    public init(image: Image?, text: String?, color: Color = .primary, isFixed: KeyboardToolbarEdge? = nil, callback: @escaping () -> Void) {
+    private init(image: Image?, text: String?, color: Color = .primary, isFixed: KeyboardToolbarEdge? = nil, callback: @escaping () -> Void) {
         self.image = image
         self.text = text
         self.callback = callback
