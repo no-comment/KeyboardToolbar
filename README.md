@@ -55,7 +55,8 @@ Use by attaching `.keyboardToolbar(...)` to the outermost part of your View.
 
 | **Parameter** | **Type**               | **Optional** | **Description**                                              |
 | ------------- | ---------------------- | ------------ | ------------------------------------------------------------ |
-| `image`       | `Image`                | No           | The image/icon of the toolbar icon. Convenience initializers exist for *systemName* and *name* |
+| `image`       | `Image`                | Yes          | The image/icon of the toolbar icon. Convenience initializers exist for *systemName* and *name* |
+| `text`        | `String`               | Yes          | The text of the toolbar icon. Alternative to displaying an image. |
 | `color`       | `Color`                | Yes          | Color of the image/icon                                      |
 | `isFixed`     | `KeyboardToolbarEdge?` | Yes          | Whether the item should be sticky or not. Possible values: `nil`, `.leading` or `.trailing`. |
 | `callback`    | `() -> Void`           | No           | Action the item should perform when pressed                  |
