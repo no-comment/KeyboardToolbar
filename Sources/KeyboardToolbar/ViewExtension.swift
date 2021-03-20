@@ -52,6 +52,10 @@ internal struct AppendKeyboardToolbar: ViewModifier {
 }
 
 public extension View {
+    /// Applies a toolbar to the keyboard of this View. Should be attached to the outermost part of the View.
+    /// - Parameters:
+    ///   - items: A list of all items the toolbar shall contain.
+    ///   - style: Styling of the keyboard toolbar.
     func keyboardToolbar(_ items: [KeyboardToolbarItem], style: KeyboardToolbarStyle = .standard) -> some View {
         #if targetEnvironment(macCatalyst)
         return self
