@@ -34,11 +34,17 @@ internal struct KeyboardToolbar: View {
     func itemGroup(_ items: [KeyboardToolbarItem]) -> some View {
         ForEach(items) { item in
             Button(action: item.callback, label: {
-                item.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: style.itemSize, height: style.itemSize)
-                    .foregroundColor(item.color)
+                if (item.image != nil || item.text == nil) {
+                    (item.image ?? Image(systemName: "placeholdertext.fill"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: style.itemSize, height: style.itemSize)
+                        .foregroundColor(item.color)
+                } else {
+                    Text(item.text ?? "")
+                        .font(.system(size: style.itemSize))
+                        .foregroundColor(item.color)
+                }
             })
             .frame(height: style.height)
             .contentShape(Rectangle())
@@ -76,7 +82,7 @@ internal struct KeyboardToolbar: View {
 
 struct KeyboardToolbar_Previews: PreviewProvider {
     static var previews: some View {
-        KeyboardToolbar(items: [KeyboardToolbarItem("xmark.circle", callback: {}), KeyboardToolbarItem("checkmark.circle", callback: {})], style: .standard)
+        KeyboardToolbar(items: [KeyboardToolbarItem("xmark.circle", callback: {}), KeyboardToolbarItem("checkmark.circle", callback: {}), KeyboardToolbarItem(text: "apple", color: .red, callback: {}), KeyboardToolbarItem(image: nil, text: nil, color: .red, callback: {})], style: .standard)
     }
 }
 #endif
