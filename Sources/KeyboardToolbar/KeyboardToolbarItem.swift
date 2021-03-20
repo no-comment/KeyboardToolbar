@@ -3,16 +3,22 @@ import SwiftUI
 
 public struct KeyboardToolbarItem: Identifiable {
     public let id: UUID = UUID()
-    let image: Image
+    let image: Image?
     let callback: () -> Void
     let color: Color
     let isFixed: KeyboardToolbarEdge?
+    let text: String?
     
-    public init(_ image: Image, color: Color = .primary, isFixed: KeyboardToolbarEdge? = nil, callback: @escaping () -> Void) {
+    private init(image: Image?, text: String?, color: Color = .primary, isFixed: KeyboardToolbarEdge? = nil, callback: @escaping () -> Void) {
         self.image = image
+        self.text = text
         self.callback = callback
         self.color = color
         self.isFixed = isFixed
+    }
+    
+    public init(_ image: Image, color: Color = .primary, isFixed: KeyboardToolbarEdge? = nil, callback: @escaping () -> Void) {
+        self.init(image: image, text: nil, color: color, isFixed: isFixed, callback: callback)
     }
     
     public init(_ systemName: String, color: Color = .primary, isFixed: KeyboardToolbarEdge? = nil, callback: @escaping () -> Void) {
@@ -21,6 +27,10 @@ public struct KeyboardToolbarItem: Identifiable {
     
     public init(name: String, color: Color = .primary, isFixed: KeyboardToolbarEdge? = nil, callback: @escaping () -> Void) {
         self.init(Image(name), color: color, isFixed: isFixed, callback: callback)
+    }
+    
+    public init(text: String, color: Color = .primary, isFixed: KeyboardToolbarEdge? = nil, callback: @escaping () -> Void) {
+        self.init(image: nil, text: text, color: color, isFixed: isFixed, callback: callback)
     }
 }
 
