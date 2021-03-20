@@ -43,6 +43,7 @@ internal struct KeyboardToolbar: View {
                 } else {
                     Text(item.text ?? "")
                         .font(.system(size: style.itemSize))
+                        .frame(minWidth: style.itemSize)
                         .foregroundColor(item.color)
                 }
             })
@@ -82,7 +83,13 @@ internal struct KeyboardToolbar: View {
 
 struct KeyboardToolbar_Previews: PreviewProvider {
     static var previews: some View {
-        KeyboardToolbar(items: [KeyboardToolbarItem("xmark.circle", callback: {}), KeyboardToolbarItem("checkmark.circle", callback: {}), KeyboardToolbarItem(text: "apple", color: .red, callback: {}), KeyboardToolbarItem(image: nil, text: nil, color: .red, callback: {})], style: .standard)
+        KeyboardToolbar(items: [
+            KeyboardToolbarItem("xmark.circle", callback: {}),
+            KeyboardToolbarItem("checkmark.circle", callback: {}),
+            KeyboardToolbarItem(text: #"\"#, color: .red, callback: {}),
+            KeyboardToolbarItem(text: "apple", color: .red, callback: {}),
+            KeyboardToolbarItem(image: nil, text: nil, color: .red, callback: {})
+        ], style: .standard)
     }
 }
 #endif
