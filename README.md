@@ -22,9 +22,9 @@ You can additionally style the toolbar (size, color, padding etc.) via a `Keyboa
 import KeyboardToolbar
 
 let toolbarItems: [KeyboardToolbarItem] = [
-    .init("bold", callback: {}),
-    .init("italic", callback: {}),
-    .init("underline", callback: {}),
+    .init(systemName: "bold", callback: {}),
+    .init(systemName: "italic", callback: {}),
+    .init(systemName: "underline", callback: {}),
     .dismissKeyboard
 ]
 

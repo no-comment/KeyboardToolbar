@@ -3,9 +3,9 @@ import KeyboardToolbar
 
 struct ExampleViewTwo: View {
     let toolbarItems: [KeyboardToolbarItem] = [
-        .init("bold", color: .white, callback: {}),
-        .init("italic", color: .white, callback: {}),
-        .init("underline", color: .white, callback: {}),
+        .init(systemName: "bold", color: .white, callback: {}),
+        .init(systemName: "italic", color: .white, callback: {}),
+        .init(systemName: "underline", color: .white, callback: {}),
         .dismissKeyboard
     ]
     

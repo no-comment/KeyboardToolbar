@@ -3,9 +3,9 @@ import KeyboardToolbar
 
 struct ExampleViewOne: View {
     let toolbarItems: [KeyboardToolbarItem] = [
-        .init("bold", callback: {}),
-        .init("italic", callback: {}),
-        .init("underline", callback: {}),
+        .init(systemName: "bold", callback: {}),
+        .init(systemName: "italic", callback: {}),
+        .init(systemName: "underline", callback: {}),
         .dismissKeyboard
     ]
     
