@@ -3,7 +3,7 @@ A SwiftUI Toolbar for your iOS keyboard.
 
 ![KeyboardToolbarPreview](https://user-images.githubusercontent.com/31541782/110855742-0df94c80-82b7-11eb-955d-3fa352457dd1.gif)
 
-You can find example files in `Tests/ExampleViews`
+You can find [example files](https://github.com/cameronshemilt/KeyboardToolbar/tree/main/Tests/ExampleViews) in `Tests/ExampleViews`.
 
 ## Installation
 
@@ -53,10 +53,22 @@ Use by attaching `.keyboardToolbar(...)` to the outermost part of your View.
 
 ### KeyboardToolbarItem
 
+Toolbar items can either be an image/icon or text.
+
+#### Image Based
+
 | **Parameter** | **Type**               | **Optional** | **Description**                                              |
 | ------------- | ---------------------- | ------------ | ------------------------------------------------------------ |
-| `image`       | `Image`                | Yes          | The image/icon of the toolbar icon. Convenience initializers exist for *systemName* and *name* |
-| `text`        | `String`               | Yes          | The text of the toolbar icon. Alternative to displaying an image. |
+| `image`       | `Image`                | No           | The image/icon of the toolbar icon. Convenience initializers exist for *systemName* and *imageName* |
+| `color`       | `Color`                | Yes          | Color of the image/icon                                      |
+| `isFixed`     | `KeyboardToolbarEdge?` | Yes          | Whether the item should be sticky or not. Possible values: `nil`, `.leading` or `.trailing`. |
+| `callback`    | `() -> Void`           | No           | Action the item should perform when pressed                  |
+
+#### Text Based
+
+| **Parameter** | **Type**               | **Optional** | **Description**                                              |
+| ------------- | ---------------------- | ------------ | ------------------------------------------------------------ |
+| `text`        | `String`               | No           | The text of the toolbar item. Alternative to displaying an image. |
 | `color`       | `Color`                | Yes          | Color of the image/icon                                      |
 | `isFixed`     | `KeyboardToolbarEdge?` | Yes          | Whether the item should be sticky or not. Possible values: `nil`, `.leading` or `.trailing`. |
 | `callback`    | `() -> Void`           | No           | Action the item should perform when pressed                  |

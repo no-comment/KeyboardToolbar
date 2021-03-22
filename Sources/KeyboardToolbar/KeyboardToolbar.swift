@@ -84,11 +84,10 @@ internal struct KeyboardToolbar: View {
 struct KeyboardToolbar_Previews: PreviewProvider {
     static var previews: some View {
         KeyboardToolbar(items: [
-            KeyboardToolbarItem("xmark.circle", callback: {}),
-            KeyboardToolbarItem("checkmark.circle", callback: {}),
+            KeyboardToolbarItem(systemName: "xmark.circle", callback: {}),
+            KeyboardToolbarItem(systemName: "checkmark.circle", callback: {}),
             KeyboardToolbarItem(text: #"\"#, color: .red, callback: {}),
             KeyboardToolbarItem(text: "apple", color: .red, callback: {}),
-            KeyboardToolbarItem(image: nil, text: nil, color: .red, callback: {})
         ], style: .standard)
     }
 }
