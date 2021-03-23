@@ -38,13 +38,15 @@ internal struct KeyboardToolbar: View {
                     (item.image ?? Image(systemName: "placeholdertext.fill"))
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: style.itemSize, height: style.itemSize)
                         .foregroundColor(item.color)
+                        .frame(width: style.itemSize, height: style.height)
+                        .frame(minWidth: max(style.itemSize, style.height))
                 } else {
                     Text(item.text ?? "")
                         .font(.system(size: style.itemSize))
-                        .frame(minWidth: style.itemSize)
                         .foregroundColor(item.color)
+                        .frame(height: style.height)
+                        .frame(minWidth: max(style.itemSize, style.height))
                 }
             })
             .frame(height: style.height)
