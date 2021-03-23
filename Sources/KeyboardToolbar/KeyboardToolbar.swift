@@ -39,17 +39,18 @@ internal struct KeyboardToolbar: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(item.color)
-                        .frame(width: style.itemSize, height: style.height)
+                        .frame(height: style.itemSize)
                         .frame(minWidth: max(style.itemSize, style.height))
+                        .frame(height: style.height)
                 } else {
                     Text(item.text ?? "")
                         .font(.system(size: style.itemSize))
                         .foregroundColor(item.color)
-                        .frame(height: style.height)
+                        .frame(height: style.itemSize)
                         .frame(minWidth: max(style.itemSize, style.height))
+                        .frame(height: style.height)
                 }
             })
-            .frame(height: style.height)
             .contentShape(Rectangle())
         }
     }
