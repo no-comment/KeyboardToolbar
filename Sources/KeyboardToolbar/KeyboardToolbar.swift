@@ -32,27 +32,29 @@ internal struct KeyboardToolbar: View {
     }
     
     func itemGroup(_ items: [KeyboardToolbarItem]) -> some View {
-        ForEach(items) { item in
-            Button(action: item.callback, label: {
-                if (item.image != nil || item.text == nil) {
-                    (item.image ?? Image(systemName: "placeholdertext.fill"))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(item.color)
-                        .frame(height: style.itemSize)
-                        .frame(minWidth: max(style.itemSize, style.height))
-                        .frame(height: style.height)
-                } else {
-                    Text(item.text ?? "")
-                        .font(.system(size: style.itemSize))
-                        .foregroundColor(item.color)
-                        .frame(height: style.itemSize)
-                        .frame(minWidth: max(style.itemSize, style.height))
-                        .frame(height: style.height)
-                }
-            })
-            .contentShape(Rectangle())
-        }
+        ForEach(items, content: itemButton)
+    }
+    
+    func itemButton(_ item: KeyboardToolbarItem) -> some View {
+        Button(action: item.callback, label: {
+            if (item.image != nil || item.text == nil) {
+                (item.image ?? Image(systemName: "placeholdertext.fill"))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(item.color)
+                    .frame(height: style.itemSize)
+                    .frame(minWidth: max(style.itemSize, style.height))
+                    .frame(height: style.height)
+            } else {
+                Text(item.text ?? "")
+                    .font(.system(size: style.itemSize))
+                    .foregroundColor(item.color)
+                    .frame(height: style.itemSize)
+                    .frame(minWidth: max(style.itemSize, style.height))
+                    .frame(height: style.height)
+            }
+        })
+        .contentShape(Rectangle())
     }
     
     var leadingItemsView: some View {
