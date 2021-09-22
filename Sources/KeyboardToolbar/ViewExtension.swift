@@ -9,7 +9,7 @@ internal struct AppendKeyboardToolbar: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             content
-                .padding(.bottom, (responder.currentHeight == 0 || items.isEmpty) ? 0 : style.height)
+                .padding(.bottom, (responder.currentHeight == 0 || items.isEmpty) ? 0 : responder.currentHeight + style.height)
             
             VStack(spacing: 0) {
                 Spacer()
@@ -23,6 +23,7 @@ internal struct AppendKeyboardToolbar: ViewModifier {
             .padding(.bottom, responder.currentHeight)
         }
         .edgesIgnoringSafeArea(.bottom)
+        .ignoresSafeArea(.keyboard)
         .animation(.easeOut(duration: responder.duration))
     }
     
