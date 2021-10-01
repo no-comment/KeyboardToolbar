@@ -7,24 +7,18 @@ internal struct AppendKeyboardToolbar: ViewModifier {
     let style: KeyboardToolbarStyle
     
     func body(content: Content) -> some View {
-        ZStack {
-            content
-                .padding(.bottom, (responder.currentHeight == 0 || items.isEmpty) ? 0 : responder.currentHeight + style.height)
+        content.overlay(toolbarContainer, alignment: .bottom)
+    }
+    
+    var toolbarContainer: some View {
+        VStack(spacing: 0) {
+            Spacer()
             
-            VStack(spacing: 0) {
-                Spacer()
-                
-                if !items.isEmpty {
-                    toolbar
-                }
+            if !items.isEmpty {
+                toolbar
             }
-            .opacity(responder.currentHeight == 0 ? 0 : 1)
-            .animation(.easeOut(duration: responder.duration))
-            .padding(.bottom, responder.currentHeight)
         }
-        .edgesIgnoringSafeArea(.bottom)
-        .ignoresSafeArea(.keyboard)
-        .animation(.easeOut(duration: responder.duration))
+        .opacity(responder.visible ? 1 : 0)
     }
     
     var toolbar: some View {

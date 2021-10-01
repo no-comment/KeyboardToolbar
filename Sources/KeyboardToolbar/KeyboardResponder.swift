@@ -3,8 +3,7 @@ import SwiftUI
 
 internal final class KeyboardResponder: ObservableObject {
     private var notificationCenter: NotificationCenter
-    @Published private(set) var currentHeight: CGFloat = 0
-    @Published private(set) var duration: Double = 0.25
+    @Published private(set) var visible: Bool = false
     
     init(center: NotificationCenter = .default) {
         notificationCenter = center
@@ -21,21 +20,11 @@ internal final class KeyboardResponder: ObservableObject {
     }
     
     @objc func keyBoardWillShow(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            currentHeight = keyboardSize.height
-        }
-        
-        if let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) {
-            duration = keyboardDuration
-        }
+        visible = true
     }
     
     @objc func keyBoardWillHide(notification: Notification) {
-        currentHeight = 0
-        
-        if let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) {
-            duration = keyboardDuration
-        }
+        visible = false
     }
 }
 #endif
