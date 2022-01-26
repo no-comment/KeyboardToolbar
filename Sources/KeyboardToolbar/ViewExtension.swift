@@ -42,6 +42,7 @@ internal struct AppendKeyboardToolbar: ViewModifier {
                 
                 KeyboardToolbar(items: items, style: style)
             }
+            .background(style.backgroundColor.ignoresSafeArea(.all, edges: .bottom))
         }
     }
 }
