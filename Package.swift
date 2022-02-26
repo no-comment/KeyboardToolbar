@@ -17,7 +17,7 @@ let package = Package(
         .target(
             name: "KeyboardToolbar",
             dependencies: [],
-            exclude: ["Tests/ExampleViews"]
-            ),
+            exclude: []
+        ),
     ]
 )
