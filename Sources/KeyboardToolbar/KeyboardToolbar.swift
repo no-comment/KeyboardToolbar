@@ -7,9 +7,11 @@ internal struct KeyboardToolbar: View {
     var leadingItems: [KeyboardToolbarItem] {
         items.filter { $0.isFixed == .leading }
     }
+
     var trailingItems: [KeyboardToolbarItem] {
         items.filter { $0.isFixed == .trailing }
     }
+
     var scrollingItems: [KeyboardToolbarItem] {
         items.filter { $0.isFixed == nil }
     }
@@ -44,7 +46,7 @@ internal struct KeyboardToolbar: View {
                     .foregroundColor(item.color)
                     .frame(height: style.itemSize)
                     .frame(minWidth: max(style.itemSize, style.height))
-                    .padding(.vertical, style.height - style.itemSize)
+                    .frame(maxHeight: .infinity)
                     .contentShape(Rectangle())
             } else {
                 Text(item.text ?? "")
@@ -52,10 +54,11 @@ internal struct KeyboardToolbar: View {
                     .foregroundColor(item.color)
                     .frame(height: style.itemSize)
                     .frame(minWidth: max(style.itemSize, style.height))
-                    .padding(.vertical, style.height - style.itemSize)
+                    .frame(maxHeight: .infinity)
                     .contentShape(Rectangle())
             }
         })
+        .frame(height: style.height)
         .contentShape(Rectangle())
     }
     
@@ -88,6 +91,7 @@ internal struct KeyboardToolbar: View {
     }
 }
 
+@available(iOS 15.0, *)
 struct KeyboardToolbar_Previews: PreviewProvider {
     static var previews: some View {
         KeyboardToolbar(items: [
@@ -96,6 +100,27 @@ struct KeyboardToolbar_Previews: PreviewProvider {
             KeyboardToolbarItem(text: #"\"#, color: .red, callback: {}),
             KeyboardToolbarItem(text: "apple", color: .red, callback: {}),
         ], style: .standard)
+            .padding(.vertical)
+            .background(Color.secondary.opacity(0.3))
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.roundedRectangle)
+
+        KeyboardToolbar(items: [
+            KeyboardToolbarItem(text: "\\itemize", callback: {}),
+            KeyboardToolbarItem(text: "\\sum", callback: {}),
+            KeyboardToolbarItem(text: "\\epsilon", callback: {}),
+        ], style: KeyboardToolbarStyle(
+            backgroundColor: Color(UIColor.systemBackground),
+            height: 70,
+            itemSize: 17 - 4,
+            itemSpacing: 5,
+            dividerColor: Color(UIColor.systemGray4),
+            dividerWidth: 1
+        ))
+        .padding(.vertical)
+        .background(Color.secondary.opacity(0.3))
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.roundedRectangle)
     }
 }
 #endif
