@@ -75,7 +75,7 @@ internal struct KeyboardToolbar: View {
     
     var scrollingItemsView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: style.itemSpacing) {
+            HStack(spacing: style.dividerBetweenItems ? 0 : style.itemSpacing) {
                 itemGroup(scrollingItems)
             }
         }
