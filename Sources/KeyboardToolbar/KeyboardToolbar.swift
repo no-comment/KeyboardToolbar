@@ -34,7 +34,12 @@ internal struct KeyboardToolbar: View {
     }
     
     func itemGroup(_ items: [KeyboardToolbarItem]) -> some View {
-        ForEach(items, content: itemButton)
+        ForEach(items, content: {
+            itemButton($0)
+            if style.dividerBetweenItems && $0.id != items.last?.id {
+                divider.padding(.vertical, 5)
+            }
+        })
     }
     
     func itemButton(_ item: KeyboardToolbarItem) -> some View {
@@ -91,7 +96,7 @@ internal struct KeyboardToolbar: View {
     }
 }
 
-@available(iOS 15.0, *)
+@available(iOS 16.0, *)
 struct KeyboardToolbar_Previews: PreviewProvider {
     static var previews: some View {
         KeyboardToolbar(items: [
@@ -121,6 +126,32 @@ struct KeyboardToolbar_Previews: PreviewProvider {
         .background(Color.secondary.opacity(0.3))
         .buttonStyle(.bordered)
         .buttonBorderShape(.roundedRectangle)
+        
+        KeyboardToolbar(items: [
+            KeyboardToolbarItem(text: "auto", callback: {}),
+            KeyboardToolbarItem(text: "complete", callback: {}),
+            KeyboardToolbarItem(text: "text", callback: {}),
+            .dismissKeyboard,
+        ], style: KeyboardToolbarStyle(
+            backgroundColor: Color(UIColor.systemBackground),
+            height: 45,
+            itemSize: 16,
+            itemSpacing: 5,
+            dividerColor: Color(UIColor.systemGray4),
+            dividerWidth: 1,
+            dividerBetweenItems: true
+        ))
+        .frame(maxHeight: .infinity)
+        .background(Color.secondary.opacity(0.3))
+        
+        KeyboardToolbar(items: [
+            KeyboardToolbarItem(text: "auto", callback: {}),
+            KeyboardToolbarItem(text: "complete", callback: {}),
+            KeyboardToolbarItem(text: "text", callback: {}),
+            .dismissKeyboard,
+        ], style: .standard)
+        .frame(maxHeight: .infinity)
+        .background(Color.secondary.opacity(0.3))
     }
 }
 #endif
